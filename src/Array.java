@@ -8,7 +8,67 @@ import java.util.Arrays;
 public class Array {
 
     public static void main(String[] args) {
+        Array arrayUtil = new Array();
+
         // 支持动态扩容数组
+        arrayUtil.testDynamicCapacityArray();
+
+        // 有序数组
+        arrayUtil.testOrderArray();
+
+        // 测试合并两个有序数组
+        arrayUtil.testMergeOrderArray();
+    }
+
+    /**
+     * 测试合并两个有序数组
+     */
+    public void testMergeOrderArray(){
+        int[] array1 = new int[]{1,2,8,10,28};
+        int[] array2 = new int[]{3,7,100};
+        mergeOrderArray(array1, array2);
+    }
+
+    /**
+     * 合并两个有序数组为一个有序数组
+     * @param array1 数组
+     * @param array2 数组
+     */
+    private void mergeOrderArray(int[] array1, int[] array2){
+        int[] temp = new int[array1.length + array2.length];
+        int i = 0, j = 0, index = 0;
+        while ( i < array1.length && j < array2.length) {
+            if (array1[i] <= array2[j]) {
+                temp[index] = array1[i];
+                i++;
+            }else {
+                temp[index] = array2[j];
+                j++;
+            }
+            index++;
+        }
+
+        int start = i;
+        int end = array1.length;
+        int[] rest = array1;
+        if (j < array2.length){
+            start = j;
+            end = array2.length;
+            rest = array2;
+        }
+
+        while (start < end){
+            temp[index] = rest[start];
+            index++;
+            start++;
+        }
+        System.out.println(Arrays.toString(temp));
+    }
+
+    /**
+     * 测试动态扩容数组
+     */
+    public void testDynamicCapacityArray(){
         DynamicCapacityArray array1 = new Array.DynamicCapacityArray(6);
         // 在数组尾部插入10个元素
         for (int i = 0; i < 10; i++) {
@@ -23,9 +83,12 @@ public class Array {
         // 在指定下标删除1个元素
         array1.delete(1);
         System.out.println(array1);
+    }
 
-
-        // 有序数组
+    /**
+     * 测试有序数组，增删改
+     */
+    public void testOrderArray(){
         OrderArray array2 = new Array.OrderArray(6);
         // 在数组尾部插入7个元素
         for (int i = 0; i < 7; i++){
@@ -43,7 +106,6 @@ public class Array {
         // 在下标‘2’插入一个元素
         array2.insertIndex(2,999);
         System.out.println(array2);
-
     }
 
     /**
