@@ -19,19 +19,29 @@ public class DeleteNodeInALinkedList {
         node3.next = node4;
         node4.next = null;
 
+        // 打印原链表
         deleteNodeInALinkedList.print(node1);
 
+        // 删除当前节点
         deleteNodeInALinkedList.deleteNode(node2);
 
+        // 打印链表
         deleteNodeInALinkedList.print(node1);
 
     }
 
+    /**
+     * 删除当前节点
+     */
     public void deleteNode(ListNode node) {
+        // 将后一个节点的值复制给当前节点，并跳过后一个节点
         node.val = node.next.val;
         node.next = node.next.next;
     }
 
+    /**
+     * 遍历打印链表元素
+     */
     public void print(ListNode node) {
         ListNode temp = node;
         while (temp != null) {
@@ -42,7 +52,9 @@ public class DeleteNodeInALinkedList {
     }
 }
 
-
+/**
+ * 节点
+ */
 class ListNode {
     int val;
     ListNode next;
