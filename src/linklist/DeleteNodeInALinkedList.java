@@ -20,13 +20,13 @@ public class DeleteNodeInALinkedList {
         node4.next = null;
 
         // 打印原链表
-        deleteNodeInALinkedList.print(node1);
+        LinkedListUtils.print(node1);
 
         // 删除当前节点
         deleteNodeInALinkedList.deleteNode(node2);
 
         // 打印链表
-        deleteNodeInALinkedList.print(node1);
+        LinkedListUtils.print(node1);
 
     }
 
@@ -38,25 +38,4 @@ public class DeleteNodeInALinkedList {
         node.val = node.next.val;
         node.next = node.next.next;
     }
-
-    /**
-     * 遍历打印链表元素
-     */
-    public void print(ListNode node) {
-        ListNode temp = node;
-        while (temp != null) {
-            System.out.print(temp.val);
-            temp = temp.next;
-        }
-        System.out.println("");
-    }
-}
-
-/**
- * 节点
- */
-class ListNode {
-    int val;
-    ListNode next;
-    ListNode(int x) { val = x; }
 }
