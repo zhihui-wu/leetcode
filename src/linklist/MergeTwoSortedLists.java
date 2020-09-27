@@ -12,19 +12,19 @@ public class MergeTwoSortedLists {
 
     public static void main(String[] args) {
         MergeTwoSortedLists mergeTwoSortedLists = new MergeTwoSortedLists();
-        ListNode list1 = new ListNode(4);
-        ListNode node2 = new ListNode(5);
-        ListNode node3 = new ListNode(1);
-        ListNode node4 = new ListNode(9);
+        ListNode list1 = new ListNode(1);
+        ListNode node2 = new ListNode(2);
+        ListNode node3 = new ListNode(4);
+        ListNode node4 = new ListNode(8);
         list1.next = node2;
         node2.next = node3;
         node3.next = node4;
         node4.next = null;
 
-        ListNode list2 = new ListNode(4);
-        ListNode node5 = new ListNode(5);
-        ListNode node6 = new ListNode(1);
-        ListNode node7 = new ListNode(9);
+        ListNode list2 = new ListNode(1);
+        ListNode node5 = new ListNode(3);
+        ListNode node6 = new ListNode(4);
+        ListNode node7 = new ListNode(7);
         list2.next = node5;
         node5.next = node6;
         node6.next = node7;
@@ -35,9 +35,10 @@ public class MergeTwoSortedLists {
         LinkedListUtils.print(list2);
 
         // 迭代（即遍历）
-        ListNode result = mergeTwoSortedLists.mergeTwoLists(list2, list2);
+//        ListNode result = mergeTwoSortedLists.mergeTwoLists(list1, list2);
 
         // 递归
+        ListNode result = mergeTwoSortedLists.mergeTwoLists1(list1, list2);
 
         // 打印链表
         LinkedListUtils.print(result);
@@ -70,5 +71,26 @@ public class MergeTwoSortedLists {
         }
         rear.next = rest;
         return head.next;
+    }
+
+    /**
+     * 递归
+     * 时间复杂度：O（ N　＋　Ｍ）
+     * 空间复杂度：O（ N　＋　Ｍ ）
+     */
+    public ListNode mergeTwoLists1(ListNode l1, ListNode l2) {
+        ListNode temp;
+        if (l1 == null) {
+            return l2;
+        }else if (l2 == null) {
+            return l1;
+        }else if (l1.val <= l2.val) {
+            temp = l1;
+            l1.next = mergeTwoLists1(l1.next, l2);
+        }else {
+            temp = l2;
+            l2.next = mergeTwoLists1(l1, l2.next);
+        }
+        return temp;
     }
 }
