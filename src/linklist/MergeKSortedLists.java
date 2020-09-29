@@ -85,8 +85,10 @@ public class MergeKSortedLists {
 //        ListNode result = mergeKSortedLists.mergeKLists1(lists);
 
         // 解法三：顺序合并
-        ListNode result = mergeKSortedLists.mergeKLists2(lists);
+//        ListNode result = mergeKSortedLists.mergeKLists2(lists);
 
+        // 解法四：分治合并
+        ListNode result = mergeKSortedLists.mergeKLists3(lists);
 
         // 打印链表
         LinkedListUtils.print(result);
@@ -244,6 +246,9 @@ public class MergeKSortedLists {
         return finish;
     }
 
+    /**
+     * 合并两个有序链表
+     */
     private ListNode mergeTwoList(ListNode a, ListNode b){
         if (a == null || b == null) {
             return a == null ? b : a;
@@ -267,6 +272,30 @@ public class MergeKSortedLists {
         rear.next = rest;
         return head.next;
     }
+
+    /**
+     * 分治合并
+     * 时间复杂度：O（ （K * N）* （log K））
+     * 空间复杂度：O（ log K ）
+     */
+    public ListNode mergeKLists3(ListNode[] lists) {
+        return doMerge(lists, 0, lists.length - 1);
+    }
+
+    /**
+     * 用于递归合并
+     */
+    private ListNode doMerge(ListNode[] lists, int head, int rear) {
+        if (head == rear) {
+            return lists[head];
+        }
+        if (head > rear) {
+            return null;
+        }
+        int mid = (head + rear) / 2;
+        return mergeTwoList(doMerge(lists, head, mid), doMerge(lists, mid + 1, rear));
+    }
+
 
 }
 
