@@ -82,7 +82,10 @@ public class MergeKSortedLists {
 //        ListNode result = mergeKSortedLists.mergeKLists(lists);
 
         // 解法二：优先队列
-        ListNode result = mergeKSortedLists.mergeKLists1(lists);
+//        ListNode result = mergeKSortedLists.mergeKLists1(lists);
+
+        // 解法三：顺序合并
+        ListNode result = mergeKSortedLists.mergeKLists2(lists);
 
 
         // 打印链表
@@ -227,6 +230,43 @@ public class MergeKSortedLists {
 
     // 优先队列
     PriorityQueue<Status> queue = new PriorityQueue<>();
+
+    /**
+     * 顺序合并
+     * 时间复杂度：O（ N * (K ^ 2) ）
+     * 空间复杂度：O（ 1 ）
+     */
+    public ListNode mergeKLists2(ListNode[] lists) {
+        ListNode finish = null;
+        for (int i = 0; i < lists.length; i++) {
+            finish = mergeTwoList(finish, lists[i]);
+        }
+        return finish;
+    }
+
+    private ListNode mergeTwoList(ListNode a, ListNode b){
+        if (a == null || b == null) {
+            return a == null ? b : a;
+        }
+        ListNode head = new ListNode();
+        ListNode rear = head;
+        while (a != null && b != null) {
+            if (a.val <= b.val) {
+                rear.next = a;
+                a = a.next;
+            }else {
+                rear.next = b;
+                b = b.next;
+            }
+            rear = rear.next;
+        }
+        ListNode rest = a;
+        if (a == null) {
+            rest = b;
+        }
+        rear.next = rest;
+        return head.next;
+    }
 
 }
 
