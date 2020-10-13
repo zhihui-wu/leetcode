@@ -71,6 +71,7 @@ public class linkedListCycleIi {
         // a:temp指针从头指针走到入环点
         // nq - b：slow指针从第一个相遇点，绕环，直到与temp指针在入环点相遇
         // 思考一下为什么temp指针一定会与slow指针在入环点相遇
+        // 因为 nq = a + b ，所以 nq - b = a
         while (fast != null && fast.next != null) {
             System.out.println(slow.val);
             System.out.println(fast.val);
