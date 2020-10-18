@@ -21,8 +21,6 @@ public class RemoveDuplicatesFromSortedList {
         node4.next = node5;
         node5.next = null;
 
-
-        // 解法一：快慢指针，反转一半链表
         ListNode result = removeDuplicatesFromSortedList.deleteDuplicates(list1);
 
         LinkedListUtils.print(result);
