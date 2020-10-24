@@ -1,6 +1,5 @@
 package thought.recursive;
 
-import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,7 +40,7 @@ public class ClimbingStairs {
      * wzh:递归
      * 时间复杂度：O（ N ）
      * 空间复杂度：O（ N ）
-     * 注意：双向队列只存储数组元素下标
+     * 注意：通过map去除重复计算
      */
     public int climbStairs(int n) {
         if (n == 1) {
