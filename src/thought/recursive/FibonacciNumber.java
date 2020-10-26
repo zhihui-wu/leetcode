@@ -76,6 +76,9 @@ public class FibonacciNumber {
         return doFib2(n, cache);
     }
 
+    /**
+     * 进行递归
+     */
     private int doFib2(int n, Integer[] cache) {
         if (cache[n] != null) {
             return cache[n];
