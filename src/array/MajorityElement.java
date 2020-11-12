@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @Description: 多数元素
+ * @Description: 169. 多数元素
  * @Author: 吴智慧
  * @Date: 2020/9/15 22:07
  * https://leetcode-cn.com/problems/majority-element/

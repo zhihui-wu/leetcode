@@ -5,11 +5,10 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @Description: 三数之和
+ * @Description: 15. 三数之和
  * @Author: 吴智慧
  * @Date: 2020/9/14 20:57
  * https://leetcode-cn.com/problems/3sum/
- * https://leetcode-cn.com/problems/3sum/solution/san-shu-zhi-he-by-leetcode-solution/
  */
 public class ThreeSum {
     public static void main(String[] args) {
