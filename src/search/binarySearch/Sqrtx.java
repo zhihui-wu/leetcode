@@ -37,7 +37,6 @@ public class Sqrtx {
         }
         int mid = l + (r - l) / 2;
         long temp = (long)mid * mid;
-        System.out.println(mid + ":" + temp);
         int index = -1;
         if (temp > x) {
             index = doSqrt(l, mid - 1, x);
