@@ -19,6 +19,10 @@ public class FirstUniqueCharacterInAString {
 
         int result = firstUniqueCharacterInAString.firstUniqChar(s);
 
+        /*
+         * 请尝试，不用对象封装，使用两次遍历来处理
+         */
+
         System.out.println(result);
 
     }
