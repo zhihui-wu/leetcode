@@ -27,7 +27,10 @@ public class PalindromeLinkedList {
 
 
         // 解法一：快慢指针，反转一半链表
-        boolean result = palindromeLinkedList.isPalindrome(list1);
+//        boolean result = palindromeLinkedList.isPalindrome(list1);
+
+        // 解法一：快慢指针，反转后半链表，判断后恢复原链表
+        boolean result = palindromeLinkedList.isPalindrome1(list1);
 
         System.out.println(result);
     }
@@ -75,5 +78,48 @@ public class PalindromeLinkedList {
             list2 = list2.next;
         }
         return true;
+    }
+
+
+    public boolean isPalindrome1(ListNode head) {
+        //快慢指针，确定中间节点
+        ListNode quick = head, slow = head;
+        while(quick != null && quick.next != null){
+            quick = quick.next.next;
+            slow = slow.next;
+        }
+        //将后半段链表逆转
+        ListNode tempHead = rever(slow);
+        //分别从头尾开始比对前后两段
+        ListNode head1 = head, head2 = tempHead;
+        while(head1 != head2 && head1 != null && head2 != null) {
+            if(head1.val != head2.val) {
+                return false;
+            }
+            head1 = head1.next;
+            head2 = head2.next;
+        }
+        //恢复原链表
+        rever(tempHead);
+        return true;
+    }
+
+    public ListNode rever(ListNode head){
+        ListNode result = head;
+        while(result != null && result.next != null) {
+            result = result.next;
+        }
+        doRevert(head);
+        return result;
+    }
+
+    public ListNode doRevert(ListNode node) {
+        if(node == null || node.next == null) {
+            return node;
+        }
+        ListNode temp = doRevert(node.next);
+        temp.next = node;
+        node.next = null;
+        return node;
     }
 }

@@ -16,6 +16,10 @@ public class LongestCommonPrefix {
 
         String result = longestCommonPrefix.longestCommonPrefix(strs);
 
+        /**
+         * 尝试：排序后，比较首尾字符串
+         */
+
         System.out.println(result);
 
     }
