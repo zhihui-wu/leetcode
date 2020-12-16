@@ -58,12 +58,10 @@ public class LinkedListCycle {
      * 空间复杂度：O（ 1 ）
      */
     public boolean hasCycle2(ListNode head) {
-        ListNode fast = head;
-        ListNode slow = head;
+        ListNode fast = head, slow = head;
         // 如果有环，快慢指针最终会在环内追逐，并且快指针会追上慢指针
         while (fast != null && fast.next != null) {
-            fast = fast.next;
-            fast = fast.next;
+            fast = fast.next.next;
             slow = slow.next;
             System.out.println(slow.val);
             System.out.println(fast.val);
