@@ -1,4 +1,4 @@
-package thought.recursive;
+package dp;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,8 +26,9 @@ public class ClimbingStairs {
         int result = climbingStairs.climbStairs(n);
 
         /**
-         * todo 解法一：动态规划
+         * 解法一：动态规划
          */
+        int result1 = climbingStairs.climbStairs1(n);
 
         /**
          * todo 解法二：遍历迭代
@@ -49,20 +50,27 @@ public class ClimbingStairs {
         if (n == 2) {
             return 2;
         }
-        int onePart = 0;
-        int twoPart = 0;
-        if (map.containsKey(n-1)) {
-            onePart = map.get(n-1);
-        }else {
-            onePart = climbStairs(n-1);
+        if (map.containsKey(n)) {
+            return map.get(n);
         }
-        if (map.containsKey((n-2))) {
-            twoPart = map.get(n-2);
-        }else {
-            twoPart = climbStairs(n-2);
+        int result = climbStairs(n-1) + map.get(n-2);
+        map.put(n, result);
+        return result;
+    }
 
+
+    /**
+     * 动态规划
+     * 时间复杂度：O（ N ）
+     * 空间复杂度：O（ 1 ）
+     */
+    public int climbStairs1(int n) {
+        int p = 0, q = 0, r = 1;
+        for (int i = 1; i <= n; i++) {
+            p = q;
+            q = r;
+            r = p + q;
         }
-        map.put(n, onePart + twoPart);
-        return onePart + twoPart;
+        return r;
     }
 }
