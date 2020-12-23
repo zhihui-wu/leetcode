@@ -18,6 +18,10 @@ public class MaximumSubarray {
 
     }
 
+    /**
+     * 时间复杂度：O（ n ）
+     * 空间复杂度：O（ 1 ）
+     */
     public int maxSubArray(int[] nums) {
 
         int pre = nums[0], max = nums[0];
