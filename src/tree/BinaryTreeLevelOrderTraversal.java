@@ -1,6 +1,7 @@
 package tree;
 
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -35,6 +36,7 @@ public class BinaryTreeLevelOrderTraversal {
         List<List<Integer>> result = new ArrayList<>();
         List<Integer> item = new ArrayList<>();
 
+        // 使用Queue队列,poll队头取出,offer队尾压入
         Queue<TreeNode> queue = new LinkedList<>();
         queue.offer(root);
         // 可以通过设置null为每层标记，表示一层遍历结束；
