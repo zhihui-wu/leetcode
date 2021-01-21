@@ -17,6 +17,10 @@ public class MergeIntervals {
 
     }
 
+
+    /**
+     * 复杂度取决于排序
+     */
     public int[][] merge(int[][] intervals) {
         if (intervals.length == 0){
             return intervals;

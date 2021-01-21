@@ -12,6 +12,10 @@ public class RemoveCoveredIntervals {
 
     }
 
+
+    /**
+     * 复杂度取决于排序
+     */
     public int removeCoveredIntervals(int[][] intervals) {
 
         if (intervals.length < 2) {

@@ -19,6 +19,11 @@ public class InsertInterval {
 
     }
 
+    /**
+     * 插入排序
+     * 时间复杂度：O（ n ）
+     * 空间复杂度：O（ n ）
+     */
     public int[][] insert(int[][] intervals, int[] newInterval) {
         if (intervals.length == 0) {
             return new int[][]{newInterval};
