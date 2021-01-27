@@ -12,9 +12,11 @@ public class LongestCommonPrefix {
 
         LongestCommonPrefix longestCommonPrefix = new LongestCommonPrefix();
 
-        String[] strs = new String[]{"flower","flow","flight"};
+//        String[] strs = new String[]{"flower","flow","flight"};
 
-        String result = longestCommonPrefix.longestCommonPrefix(strs);
+        String[] strs = new String[]{"dog","racecar","car"};
+
+        String result = longestCommonPrefix.longestCommonPrefix1(strs);
 
         /**
          * 尝试：排序后，比较首尾字符串
@@ -26,6 +28,7 @@ public class LongestCommonPrefix {
 
 
     /**
+     * 逐个字符，逐个字符串比对
      * 时间复杂度：O（ n * m ）
      * 空间复杂度：O（ 1 ）
      */
@@ -52,6 +55,59 @@ public class LongestCommonPrefix {
             temp = ' ';
             i++;
         }
+    }
+
+
+    /**
+     * 排序后比对第一个和最后一个
+     * 时间复杂度：O（ n * m ）
+     * 空间复杂度：O（ 1 ）
+     */
+    public String longestCommonPrefix1(String[] strs) {
+        if (strs.length == 0) {
+            return "";
+        }
+        if (strs.length == 1) {
+            return strs[0];
+        }
+        int n = strs.length - 1;
+        doSort(strs, 0, n);
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < strs[0].length(); i++) {
+            if (strs[0].charAt(i) == strs[n].charAt(i)) {
+                result.append(strs[0].charAt(i));
+            }else{
+                break;
+            }
+        }
+        return result.toString();
+    }
+
+    public void doSort(String[] strs, int q, int r) {
+        if (q > r) {
+            return;
+        }
+        int p = partition(strs, q, r);
+        doSort(strs, q, p-1);
+        doSort(strs, p+1, r);
+    }
+
+    public int partition(String[] strs, int q, int r) {
+        String tempTarget = strs[r];
+        int i = q, j = q;
+        while (j < r) {
+            if (strs[j].compareTo(tempTarget) <= 0) {
+                String temp = strs[j];
+                strs[j] = strs[i];
+                strs[i] = temp;
+                i++;
+            }
+            j++;
+        }
+        String temp = strs[i];
+        strs[i] = strs[r];
+        strs[r] = temp;
+        return i;
     }
 
 }
