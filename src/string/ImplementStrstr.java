@@ -19,6 +19,8 @@ public class ImplementStrstr {
         // 请尝试：KMP字符串匹配模式
         int result = implementStrstr.strStr1(haystack, needle);
 
+        // 请尝试：使用hash记录n个needle长度的字典表，直接检索，needle
+
         System.out.println(result);
     }
 
@@ -54,7 +56,7 @@ public class ImplementStrstr {
 
 
     /**
-     * KMP匹配模式：超出时间限制
+     * KMP匹配模式
      * 时间复杂度：O（ n * m ）
      * 空间复杂度：O（ 1 ）
      */

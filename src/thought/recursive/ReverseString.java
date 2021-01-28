@@ -20,15 +20,16 @@ public class ReverseString {
         System.out.println(Arrays.toString(s));
     }
 
+    /**
+     * 双指针
+     * 时间复杂度：O（ n ）
+     * 空间复杂度：O（ 1 ）
+     */
     public void reverseString(char[] s) {
-        int n = s.length;
-        for (int i = 0; i < n; i++) {
-            if (i >= n - 1 - i) {
-                break;
-            }
-            char temp = s[i];
-            s[i] = s[n - 1 - i];
-            s[n - 1 - i] = temp;
+        for (int left = 0, right = s.length - 1; left < right; left++, right--) {
+            char temp = s[left];
+            s[left] = s[right];
+            s[right] = temp;
         }
     }
 }
