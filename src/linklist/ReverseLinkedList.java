@@ -79,4 +79,21 @@ public class ReverseLinkedList {
         head.next = null;
         return aft;
     }
+
+
+    /**
+     * 迭代（即遍历）头插法
+     * 时间复杂度：O（ N ）
+     * 空间复杂度：O（ 1 ）
+     */
+    public ListNode reverseListTest(ListNode head) {
+        ListNode tempHead = head;
+        while (head != null && head.next != null) {
+            ListNode temp = head.next;
+            head.next = head.next.next;
+            temp.next = tempHead;
+            tempHead = temp;
+        }
+        return tempHead;
+    }
 }

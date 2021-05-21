@@ -86,4 +86,18 @@ public class RemoveLinkedListElements {
         LinkedListUtils.print(head);
         return sentinel.next;
     }
+
+    public ListNode removeElementsTemp(ListNode head, int val) {
+        ListNode tempHead = new ListNode();
+        tempHead.next = head;
+        ListNode temp = tempHead;
+        while(temp.next != null) {
+            if (temp.next.val == val) {
+                temp.next = temp.next.next;
+            }else {
+                temp = temp.next;
+            }
+        }
+        return tempHead.next;
+    }
 }
