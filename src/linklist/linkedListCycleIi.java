@@ -91,4 +91,21 @@ public class linkedListCycleIi {
         }
         return null;
     }
+
+
+    public ListNode detectCycleTest(ListNode head) {
+        ListNode fast = head, slow = head, temp = head;
+        while(fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (fast == slow) {
+                while(temp != slow) {
+                    temp = temp.next;
+                    slow = slow.next;
+                }
+                return temp;
+            }
+        }
+        return null;
+    }
 }
