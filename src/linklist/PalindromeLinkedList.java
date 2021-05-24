@@ -122,4 +122,40 @@ public class PalindromeLinkedList {
         node.next = null;
         return node;
     }
+
+    /**
+     * 解法二：快慢指针，反转后半链表，判断后恢复原链表
+     * 时间复杂度：O（ N ）
+     * 空间复杂度：O（ 1 ）
+     * 恢复原链接，只要简单反转，前半段链表持有后半段端点指针，不用处理两个链表连接问题
+     */
+    public boolean isPalindromeTest(ListNode head) {
+        ListNode fast = head, slow = head;
+        while(fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        ListNode tempHead = doRevertTest(slow);
+        ListNode point = head, tempPoint = tempHead;
+        while(tempPoint != null && point != tempPoint) {
+            if (point.val != tempPoint.val) {
+                return false;
+            }
+            point = point.next;
+            tempPoint = tempPoint.next;
+        }
+        doRevertTest(tempHead);
+        return true;
+    }
+
+    private ListNode doRevertTest(ListNode slow) {
+        ListNode tempHead = new ListNode();
+        while(slow != null) {
+            ListNode temp = slow;
+            slow = slow.next;
+            temp.next = tempHead.next;
+            tempHead.next = temp;
+        }
+        return tempHead.next;
+    }
 }
