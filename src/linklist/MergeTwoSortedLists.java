@@ -93,4 +93,30 @@ public class MergeTwoSortedLists {
         }
         return temp;
     }
+
+    /**
+     * 遍历，将l2插入到l1种
+     * 时间复杂度：O（ N ）
+     * 空间复杂度：O（ 1 ）
+     */
+    public ListNode mergeTwoListsTest(ListNode l1, ListNode l2) {
+        ListNode newList = new ListNode();
+        newList.next = l1;
+        ListNode point = newList;
+        while (point.next != null && l2 != null) {
+            if (point.next.val <= l2.val) {
+                point = point.next;
+            }else {
+                ListNode temp = l2;
+                l2 = l2.next;
+                temp.next = point.next;
+                point.next = temp;
+                point = point.next;
+            }
+        }
+        if (l2 != null) {
+            point.next = l2;
+        }
+        return newList.next;
+    }
 }
