@@ -17,6 +17,7 @@ public class FlattenAMultilevelDoublyLinkedList {
      * 递归
      * 时间复杂度：O（ 节点数 ）
      * 空间复杂度：O（ 最深级数 ）
+     * 其实就是一棵二叉树的深度优先遍历
      */
     public Node flatten(Node head) {
         Node newHead = new Node();
