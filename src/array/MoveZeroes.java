@@ -48,4 +48,21 @@ public class MoveZeroes {
     }
 
 
+    /**
+     * 时间复杂度：O（ n ）
+     * 空间复杂度：O（ 1 ）
+     */
+    public void moveZeroesTest(int[] nums) {
+        int slow = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                int temp = nums[i];
+                nums[i] = 0;
+                nums[slow] = temp;
+                slow++;
+            }
+        }
+    }
+
+
 }
